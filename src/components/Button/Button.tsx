@@ -1,5 +1,5 @@
-import { InterButton } from '../interfaces/InterButton';
-import { ButtonContainer } from './Button.styles';
+import { InterButton } from '../../interfaces/InterButton';
+import { ButtonContainer } from './stylesButton/Button.styles';
 
 const Button = ({ text, variant = 'primary', ...props }: InterButton) => {
   return (
