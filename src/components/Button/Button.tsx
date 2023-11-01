@@ -1,3 +1,4 @@
+import React from 'react';
 import { InterButton } from '../../interfaces/InterButton';
 import { ButtonContainer } from './stylesButton/Button.styles';
 
