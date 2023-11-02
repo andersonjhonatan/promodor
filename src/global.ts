@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
-const toogle = true;
+const toogle = true
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-body{
+body {
   background-color: ${({ theme }) => (toogle ? theme['cinza-700'] : theme.light)};
   color: ${({ theme }) => (toogle ? theme['cinza-100'] : theme.dark)};
 }

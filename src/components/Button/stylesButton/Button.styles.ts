@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { InterButtonProps } from '../../../interfaces/InterButton';
+import styled from 'styled-components'
+import { InterButtonProps } from '../../../interfaces/InterButton'
 
 export const ButtonContainer = styled.button<InterButtonProps>`
   height: 40px;
@@ -9,4 +9,4 @@ export const ButtonContainer = styled.button<InterButtonProps>`
   margin: 4px;
 
   background-color: ${(props) => props.theme['green-100']};
-`;
+`
