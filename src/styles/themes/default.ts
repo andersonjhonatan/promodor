@@ -27,7 +27,7 @@ export const defaultTheme = {
   'blue-claro-300': '#00afb9',
   'blue-claro-400': '#0096a6',
   'blue-claro-500': '#007a87',
-  
+
   'yellow-100': '#ffff00',
   'yellow-200': '#cccc00',
   'yellow-300': '#999900',
@@ -38,5 +38,4 @@ export const defaultTheme = {
   'green-200': '#99a678',
   'green-300': '#667f3d',
   'green-400': '#334f1a',
-
-};
+}

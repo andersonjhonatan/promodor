@@ -10,13 +10,15 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  background-color: ${({ theme }) => (toogle ? theme['cinza-700'] : theme.light)};
+  background-color: black;
   color: ${({ theme }) => (toogle ? theme['cinza-100'] : theme.dark)};
 }
 
 :focus {
   outline: none;
-  box-shadow: 0 0 0 2px ${({ theme }) => theme['green-200']};
+  box-shadow: 0 0 0 2px ${({ theme }) => theme['blue-100']};
+  padding: 8px;
+  border-radius: 4px;
 }
 
 a,
@@ -31,4 +33,4 @@ body, input, textarea, button {
   font-weight: 400;
   font-size: 1rem;
 }
-`;
+`
