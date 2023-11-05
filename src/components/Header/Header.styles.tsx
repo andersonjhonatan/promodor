@@ -1,26 +1,60 @@
 import styled from 'styled-components'
+import { AiOutlineHistory } from 'react-icons/ai'
+import { TbTimeDuration45 } from 'react-icons/tb'
 
-const NAV = styled.nav`
+// Logo
+
+const LogoHeader = styled.img`
+  width: 3rem;
+`
+
+// SVGs
+
+const SvgHome = styled(TbTimeDuration45)`
+  font-size: 2rem;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+`
+
+const SvgHistory = styled(AiOutlineHistory)`
+  font-size: 2rem;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+`
+
+// Components
+
+const HeaderContainer = styled.div`
   background-color: ${(props) => props.theme['blue-200']};
-  border-radius: 0.5rem 0.5rem 0 0;
   box-shadow: 0 0 10px 2px rgba(0, 0, 30);
   justify-content: space-between;
   display: flex;
-  padding: 2.5rem;
-  h1 {
-    color: ${(props) => props.theme['cinza-100']};
+  padding: 1.5rem 5rem;
+  align-items: center;
+  height: 5rem;
+  border-radius: 8px 8px 0 0;
+
+  nav {
+    display: flex;
+    gap: 1rem;
   }
-`
 
-const UL = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-
-  li > a {
+  a {
     text-decoration: none;
     color: ${(props) => props.theme['cinza-100']};
+
+    &:hover {
+      border-bottom: 2px dashed ${(props) => props.theme['blue-claro-500']};
+      transition: 0.3s;
+    }
+
+    &.active {
+      border-bottom: 2px dashed ${(props) => props.theme['blue-claro-500']};
+      transition: 0.3s;
+      color: ${(props) => props.theme['blue-claro-500']};
+    }
   }
 `
-
-export { NAV, UL }
+export { HeaderContainer, SvgHome, SvgHistory, LogoHeader }

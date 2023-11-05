@@ -10,15 +10,8 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  background-color: black;
   color: ${({ theme }) => (toogle ? theme['cinza-100'] : theme.dark)};
-}
-
-:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px ${({ theme }) => theme['blue-100']};
-  padding: 8px;
-  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
 }
 
 a,
