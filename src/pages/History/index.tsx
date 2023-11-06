@@ -52,6 +52,7 @@ export const History = () => {
           <option value="Projeto 5" />
         </datalist>
       </ContainerTitle>
+
       {!tarefas ? (
         <LoadingSection>
           <Rotate size={200} />

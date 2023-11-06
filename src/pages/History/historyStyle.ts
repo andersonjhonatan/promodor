@@ -66,7 +66,7 @@ const ContainerMain = styled.div`
     color: ${(props) => props.theme['blue-200']};
     cursor: pointer;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background-color: ${(props) => props.theme['blue-200']};
     border-radius: 3px;
@@ -83,16 +83,20 @@ const TableContainer = styled.table`
 const TheadContainer = styled.thead`
   position: sticky;
   top: 0;
-  tr {
+  th {
+    padding: 1.5rem 0;
+    font-size: 1.2rem;
     background-color: ${(props) => props.theme['cinza-500']};
+    text-align: left;
+    padding-left: 1rem;
 
-    th {
-      padding: 1.5rem;
-      font-size: 1.2rem;
+    &:first-child {
+      padding-left: 1.5rem;
     }
   }
 `
 const TbodyContainer = styled.tbody`
+  text-align: left;
   tr {
     background-color: ${(props) => props.theme['cinza-600']};
     box-shadow: 0 0 0 4px ${(props) => props.theme['cinza-700']};
@@ -100,7 +104,11 @@ const TbodyContainer = styled.tbody`
     td {
       padding: 1rem;
       font-size: 1.2rem;
-      text-align: center;
+
+      &:first-child {
+        width: 50%;
+        padding-left: 1.5rem;
+      }
     }
   }
 `
