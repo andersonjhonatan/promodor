@@ -3,9 +3,9 @@ import { InterInput } from '../../interfaces/InterInput'
 
 const InputForm = styled.input<InterInput>`
   padding: 0.5rem;
-  border-radius: 6px;
-  border: none;
   outline: none;
+  border: 0;
+  border-bottom: 1px solid ${({ theme }) => theme['cinza-300']};
 
   width: ${(props) => {
     switch (props.variant) {
@@ -16,15 +16,16 @@ const InputForm = styled.input<InterInput>`
     }
   }};
 
-  background-color: ${(props) => props.theme['cinza-100']};
-  color: ${(props) => props.theme['cinza-600']};
-
-  &:focus {
-    box-shadow: 0 0 0 1px ${(props) => props.theme['blue-100']};
-  }
+  background-color: transparent;
+  color: ${(props) => props.theme['cinza-100']};
 
   &::-webkit-calendar-picker-indicator {
     display: none !important;
+  }
+
+  &::selection {
+    color: ${({ theme }) => theme.light};
+    background-color: ${({ theme }) => theme['blue-claro-500']};
   }
 `
 export { InputForm }

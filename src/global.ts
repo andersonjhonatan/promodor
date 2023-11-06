@@ -12,12 +12,15 @@ export const GlobalStyle = createGlobalStyle`
 body {
   color: ${({ theme }) => (toogle ? theme['cinza-100'] : theme.dark)};
   -webkit-font-smoothing: antialiased;
+  background-color: ${({ theme }) =>
+    toogle ? theme.dark : theme['cinza-100']};
 }
 
 a,
 button {
   cursor: pointer;
   outline: none;
+  border: 0;
   text-decoration: none;
 }
 

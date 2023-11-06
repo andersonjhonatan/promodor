@@ -4,6 +4,7 @@ export const defaultTheme = {
   danger: '#ff0000',
   success: '#00ff00',
   light: '#ffffff',
+  dark: '#000000',
 
   'cinza-100': '#f5f5f5',
   'cinza-200': '#cccccc',

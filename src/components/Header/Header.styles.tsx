@@ -10,18 +10,19 @@ const LogoHeader = styled.img`
 
 // SVGs
 
-const SvgHome = styled(TbTimeDuration45)`
+const BaseSvgStyles = `
   font-size: 2rem;
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
   padding-bottom: 4px;
 `
 
+const SvgHome = styled(TbTimeDuration45)`
+  ${BaseSvgStyles}
+`
+
 const SvgHistory = styled(AiOutlineHistory)`
-  font-size: 2rem;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 4px;
+  ${BaseSvgStyles}
 `
 
 // Components

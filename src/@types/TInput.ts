@@ -1,1 +1,1 @@
-export type InputVariant = 'nome' | 'minutes'
+export type InputVariant = 'nome' | 'minutes' | 'search'
