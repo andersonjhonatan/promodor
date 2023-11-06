@@ -1,28 +1,42 @@
 import Button from '../Button/Button'
 import Input from '../Input/Input'
-import { FormContainer, DivForm, CountdownDiv, SvgPlay } from './formStyles'
+import { FormContainer, DivForm, CountdownDiv } from './formStyles'
 
 export default function Form() {
   return (
     <FormContainer onSubmit={(e) => e.preventDefault()}>
       <DivForm>
-        <label htmlFor="nome">
-          Vou trabalhar com
-          <Input name="nome" label="Nome" placeholder="Nome do seu Projeto" />
-        </label>
-        <label>
-          <button>-</button>
-          <Input
-            type="number"
-            name="nome"
-            label="Nome"
-            placeholder="Nome do seu Projeto"
-            min={0}
-            defaultValue={0}
-          />
-          <button>+</button>
-          minutos
-        </label>
+        <label htmlFor="nome">Vou trabalhar com</label>
+        <Input
+          variant="nome"
+          id="nome"
+          name="nome"
+          label="Nome"
+          placeholder="Nome do seu Projeto"
+          list="sugestions-task"
+        />
+
+        <datalist id="sugestions-task">
+          <option value="Projeto 1" />
+          <option value="Projeto 2" />
+          <option value="Projeto 3" />
+          <option value="Projeto 4" />
+          <option value="Projeto 5" />
+        </datalist>
+
+        <label htmlFor="minutes">durante</label>
+        <Input
+          variant="minutes"
+          id="minutes"
+          type="number"
+          name="nome"
+          label="Nome"
+          placeholder="00"
+          min={0}
+          max={60}
+          step={5}
+        />
+        <span>minutos.</span>
       </DivForm>
 
       <CountdownDiv>
@@ -33,10 +47,7 @@ export default function Form() {
         <span>0</span>
       </CountdownDiv>
 
-      <section>
-        <Button type="submit" variant="primary" text="Começar" />
-        <SvgPlay />
-      </section>
+      <Button type="submit" variant="primary" text="Começar" disabled />
     </FormContainer>
   )
 }

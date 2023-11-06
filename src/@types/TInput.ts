@@ -1,1 +1,1 @@
-export type InputVariant = 'name'
+export type InputVariant = 'nome' | 'minutes'

@@ -1,20 +1,12 @@
 import styled from 'styled-components'
 
-import { GrPlay } from 'react-icons/gr'
-
-// SVGs
-
-const SvgPlay = styled(GrPlay)`
-  position: absolute;
-  left: 25%;
-`
-
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1rem;
   align-items: center;
   justify-content: center;
+  margin: 0 10%;
   height: 100%;
   justify-content: space-evenly;
 
@@ -26,22 +18,15 @@ const FormContainer = styled.form`
     background-color: ${(props) => props.theme['blue-200']};
     width: 20%;
     border-radius: 8px;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.8;
-      trasition: 0.3s;
-    }
   }
 `
 
 const DivForm = styled.div`
   display: flex;
   gap: 1rem;
-  label {
-    gap: 0.5rem;
-    display: flex;
-  }
+  width: 82%;
+  justify-content: center;
+  align-items: center;
 `
 
 const InputContainer = styled.input`
@@ -52,9 +37,8 @@ const InputContainer = styled.input`
 
 const CountdownDiv = styled.div`
   display: flex;
-  gap: 0.6rem;
+  gap: 1.2rem;
   align-items: center;
-  font-family: 'Roboto Mono', monospace;
 
   p {
     font-size: 6rem;
@@ -63,11 +47,12 @@ const CountdownDiv = styled.div`
   span {
     border: 1px solid #fff;
     padding: 2rem 2rem;
-    font-size: 10rem;
+    font-size: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
   }
 `
-export { FormContainer, InputContainer, DivForm, CountdownDiv, SvgPlay }
+export { FormContainer, InputContainer, DivForm, CountdownDiv }

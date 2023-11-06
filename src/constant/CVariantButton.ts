@@ -3,4 +3,4 @@ export const CbuttonVariants = {
   secondary: 'gray',
   danger: 'red',
   success: 'green',
-};
+}

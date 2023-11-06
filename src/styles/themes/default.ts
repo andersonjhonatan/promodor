@@ -3,7 +3,6 @@ export const defaultTheme = {
   secondary: '#f5f5f5',
   danger: '#ff0000',
   success: '#00ff00',
-  dark: '#000000',
   light: '#ffffff',
 
   'cinza-100': '#f5f5f5',
@@ -22,7 +21,6 @@ export const defaultTheme = {
   'blue-100': '#274c77',
   'blue-200': '#003366',
   'blue-300': '#001a33',
-  'blue-400': '#000000',
 
   'blue-claro-300': '#00afb9',
   'blue-claro-400': '#0096a6',
