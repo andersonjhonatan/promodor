@@ -5,7 +5,7 @@
       "Tarefa": "João",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Concluido"
     },
 
     {
@@ -13,28 +13,28 @@
       "Tarefa": "Site do eventos",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Concluido"
     },
     {
       "id": 3,
       "Tarefa": "Pomodoro",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Interrompido"
     },
     {
       "id": 4,
       "Tarefa": "Kesley",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Interrompido"
     },
     {
       "id": 5,
       "Tarefa": "Kalleo",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Interrompido"
     },
 
     {
@@ -42,7 +42,7 @@
       "Tarefa": "Anderson",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Em andamento"
     },
 
     {
@@ -50,7 +50,7 @@
       "Tarefa": "Anderson",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Concluido"
     },
 
     {
@@ -58,7 +58,7 @@
       "Tarefa": "Anderson",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Em andamento"
     },
 
     {
@@ -66,7 +66,7 @@
       "Tarefa": "Anderson",
       "Duracao": "Julia",
       "Inicio": 1,
-      "Status": "João"
+      "Status": "Em andamento"
     }
   ]
 }

@@ -9,15 +9,16 @@ const FormContainer = styled.form`
   margin: 0 10%;
   height: 100%;
   justify-content: space-evenly;
-
-  section {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ${(props) => props.theme['blue-200']};
-    width: 20%;
-    border-radius: 8px;
+  form {
+    section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: ${(props) => props.theme['blue-200']};
+      width: 20%;
+      border-radius: 8px;
+    }
   }
 `
 
@@ -27,10 +28,6 @@ const DivForm = styled.div`
   width: 82%;
   justify-content: center;
   align-items: center;
-`
-
-const InputContainer = styled.input`
-  padding: 0.5rem;
 `
 
 // countdown
@@ -55,4 +52,4 @@ const CountdownDiv = styled.div`
     font-family: 'Roboto Mono', monospace;
   }
 `
-export { FormContainer, InputContainer, DivForm, CountdownDiv }
+export { DivForm, CountdownDiv, FormContainer }

@@ -138,6 +138,32 @@ const LoadingSection = styled.section`
   height: 60%;
 `
 
+const STATUS_COLORS = {
+  green: 'success',
+  yellow: 'yellow-200',
+  red: 'vermelho-200',
+} as const
+
+interface StatusProps {
+  statuscolor: keyof typeof STATUS_COLORS
+}
+
+const Status = styled.span<StatusProps>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme[STATUS_COLORS[props.statuscolor]]};
+  }
+`
+
 export {
   HistoryContainer,
   TableContainer,
@@ -148,4 +174,5 @@ export {
   LoadingSection,
   ContainerTitle,
   BsSearchHeartStyled,
+  Status,
 }

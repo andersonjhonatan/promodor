@@ -10,6 +10,7 @@ import {
   LoadingSection,
   ContainerTitle,
   BsSearchHeartStyled,
+  Status,
 } from './historyStyle'
 import api from '../../db.json'
 import { useEffect, useState } from 'react'
@@ -75,7 +76,19 @@ export const History = () => {
                     <td>{task.Tarefa}</td>
                     <td>{task.Duracao}</td>
                     <td>{task.Inicio}</td>
-                    <td>{task.Status}</td>
+                    <td>
+                      <Status
+                        statuscolor={
+                          task.Status === 'Concluido'
+                            ? 'green'
+                            : task.Status === 'Interrompido'
+                            ? 'red'
+                            : 'yellow'
+                        }
+                      >
+                        {task.Status}
+                      </Status>
+                    </td>
                   </tr>
                 ))}
               </TbodyContainer>

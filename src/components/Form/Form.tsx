@@ -1,19 +1,34 @@
 import Button from '../Button/Button'
 import Input from '../Input/Input'
 import { FormContainer, DivForm, CountdownDiv } from './formStyles'
+import { useForm, SubmitHandler } from 'react-hook-form'
+
+interface InterForm {
+  nome: string
+  minutes: number
+}
 
 export default function Form() {
+  const { register, handleSubmit, watch } = useForm<InterForm>()
+
+  const submitForm: SubmitHandler<InterForm> = (data) => {
+    console.log(data)
+  }
+
+  const task = watch('nome')
+  const isSubmitDisabled = !task
+
   return (
-    <FormContainer onSubmit={(e) => e.preventDefault()}>
+    <FormContainer onSubmit={handleSubmit(submitForm)}>
       <DivForm>
         <label htmlFor="nome">Vou trabalhar com</label>
         <Input
           variant="nome"
           id="nome"
-          name="nome"
           label="Nome"
           placeholder="Nome do seu Projeto"
           list="sugestions-task"
+          {...register('nome')}
         />
 
         <datalist id="sugestions-task">
@@ -29,12 +44,12 @@ export default function Form() {
           variant="minutes"
           id="minutes"
           type="number"
-          name="nome"
           label="Nome"
           placeholder="00"
           min={0}
           max={60}
           step={5}
+          {...register('minutes', { valueAsNumber: true })}
         />
         <span>minutos.</span>
       </DivForm>
@@ -47,7 +62,12 @@ export default function Form() {
         <span>0</span>
       </CountdownDiv>
 
-      <Button type="submit" variant="primary" text="Começar" disabled />
+      <Button
+        type="submit"
+        variant="primary"
+        text="Começar"
+        disabled={isSubmitDisabled}
+      />
     </FormContainer>
   )
 }
