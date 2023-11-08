@@ -14,6 +14,7 @@ interface CycleFormData {
   minutes: number
   startDate: Date
   interruptedDate?: Date
+  finishDate?: Date
 }
 
 export default function Form() {
@@ -30,6 +31,8 @@ export default function Form() {
   })
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+  const totalSeconds = activeCycle ? activeCycle.minutes * 60 : 0
+
   const submitForm: SubmitHandler<NewCycleFormData> = ({ minutes, nome }) => {
     const id = String(new Date().getTime())
 
@@ -49,17 +52,33 @@ export default function Form() {
 
     if (activeCycle) {
       interval = setInterval(() => {
-        setAmountSecondsPassed(differenceInSeconds(new Date(), activeCycle.startDate))
+        const secondsDf = differenceInSeconds(new Date(), activeCycle.startDate)
+
+        if (secondsDf >= totalSeconds) {
+          setCycles((state) =>
+            state.map((cycle) => {
+              if (cycle.id === activeCycleId) {
+                return { ...cycle, finishDate: new Date() }
+              } else {
+                return cycle
+              }
+            })
+          )
+          setAmountSecondsPassed(totalSeconds)
+          clearInterval(interval)
+        } else {
+          setAmountSecondsPassed(secondsDf)
+        }
       }, 1000)
     }
 
     return () => {
       clearInterval(interval)
-      setAmountSecondsPassed(0)
-    }
-  }, [activeCycle])
+      activeCycle && setCycles((state) => state.filter((cycle) => cycle.id !== activeCycleId))
 
-  const totalSeconds = activeCycle ? activeCycle.minutes * 60 : 0
+    }
+  }, [activeCycle, totalSeconds, activeCycleId])
+
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
 
   const minutesAmount = Math.floor(currentSeconds / 60)
@@ -78,6 +97,15 @@ export default function Form() {
   const isSubmitDisabled = !task
 
   const handleInterruptCycle = () => {
+    setCycles((state) =>
+      state.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, interruptedDate: new Date() }
+        } else {
+          return cycle
+        }
+      })
+    )
     setActiveCycleId(null)
   }
 
@@ -110,7 +138,7 @@ export default function Form() {
           type="number"
           label="Nome"
           placeholder="00"
-          min={0}
+          min={1}
           step={5}
           max={60}
           disabled={!!activeCycle}
