@@ -14,7 +14,7 @@ import {
 } from './historyStyle'
 import api from '../../db.json'
 import { useEffect, useState } from 'react'
-import Input from '../../components/Input/Input'
+import { InputForm } from '../../components/Form/formStyles'
 
 export const History = () => {
   const [tarefas, setTarefas] = useState(false)
@@ -33,7 +33,7 @@ export const History = () => {
       <ContainerTitle>
         <h1>Meu Histórico</h1>
         <form>
-          <Input
+          <InputForm
             type="text"
             list="sugestion-task"
             name="search"

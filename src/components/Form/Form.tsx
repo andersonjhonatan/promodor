@@ -1,33 +1,97 @@
+/* eslint-disable prettier/prettier */
 import Button from '../Button/Button'
-import Input from '../Input/Input'
-import { FormContainer, DivForm, CountdownDiv } from './formStyles'
+import { FormContainer, DivForm, CountdownDiv, InputForm } from './formStyles'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { newMyTasksSchema } from '../../schema/FormShemaMain'
+import { NewCycleFormData } from '../../types/TNewFormData'
+import { useEffect, useState } from 'react'
+import { differenceInSeconds } from 'date-fns'
 
-interface InterForm {
+interface CycleFormData {
+  id: string
   nome: string
   minutes: number
+  startDate: Date
+  interruptedDate?: Date
 }
 
 export default function Form() {
-  const { register, handleSubmit, watch } = useForm<InterForm>()
+  const [cycles, setCycles] = useState<CycleFormData[]>([])
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
 
-  const submitForm: SubmitHandler<InterForm> = (data) => {
-    console.log(data)
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
+    resolver: zodResolver(newMyTasksSchema),
+    defaultValues: {
+      minutes: 0,
+      nome: '',
+    },
+  })
+
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+  const submitForm: SubmitHandler<NewCycleFormData> = ({ minutes, nome }) => {
+    const id = String(new Date().getTime())
+
+    const newCycle: CycleFormData = {
+      id,
+      nome,
+      minutes,
+      startDate: new Date(),
+    }
+    setCycles((state) => [...state, newCycle])
+    setActiveCycleId(id)
+    reset()
   }
+
+  useEffect(() => {
+    let interval: number
+
+    if (activeCycle) {
+      interval = setInterval(() => {
+        setAmountSecondsPassed(differenceInSeconds(new Date(), activeCycle.startDate))
+      }, 1000)
+    }
+
+    return () => {
+      clearInterval(interval)
+      setAmountSecondsPassed(0)
+    }
+  }, [activeCycle])
+
+  const totalSeconds = activeCycle ? activeCycle.minutes * 60 : 0
+  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
+
+  const minutesAmount = Math.floor(currentSeconds / 60)
+  const secondsAmount = currentSeconds % 60
+
+  const minutes = String(minutesAmount).padStart(2, '0')
+  const seconds = String(secondsAmount).padStart(2, '0')
+
+  useEffect(() => {
+    if (activeCycle) {
+      document.title = `${minutes}:${seconds} - Anderson Timer`
+    }
+  }, [minutes, seconds, activeCycle])
 
   const task = watch('nome')
   const isSubmitDisabled = !task
+
+  const handleInterruptCycle = () => {
+    setActiveCycleId(null)
+  }
 
   return (
     <FormContainer onSubmit={handleSubmit(submitForm)}>
       <DivForm>
         <label htmlFor="nome">Vou trabalhar com</label>
-        <Input
+        <InputForm
           variant="nome"
           id="nome"
           label="Nome"
           placeholder="Nome do seu Projeto"
           list="sugestions-task"
+          disabled={!!activeCycle}
           {...register('nome')}
         />
 
@@ -40,34 +104,45 @@ export default function Form() {
         </datalist>
 
         <label htmlFor="minutes">durante</label>
-        <Input
+        <InputForm
           variant="minutes"
           id="minutes"
           type="number"
           label="Nome"
           placeholder="00"
           min={0}
-          max={60}
           step={5}
+          max={60}
+          disabled={!!activeCycle}
           {...register('minutes', { valueAsNumber: true })}
         />
         <span>minutos.</span>
       </DivForm>
 
       <CountdownDiv>
-        <span>0</span>
-        <span>0</span>
+        <span>{minutes[0]}</span>
+        <span>{minutes[1]}</span>
         <p>:</p>
-        <span>0</span>
-        <span>0</span>
+        <span>{seconds[0]}</span>
+        <span>{seconds[1]}</span>
       </CountdownDiv>
 
-      <Button
-        type="submit"
-        variant="primary"
-        text="Começar"
-        disabled={isSubmitDisabled}
-      />
+      {activeCycle ? (
+        <Button
+          type="submit"
+          variant="secondary"
+          text="Interromper"
+          disabled={activeCycle === null}
+          onClick={handleInterruptCycle}
+        />
+      ) : (
+        <Button
+          type="submit"
+          variant="primary"
+          text="Começar"
+          disabled={isSubmitDisabled}
+        />
+      )}
     </FormContainer>
   )
 }

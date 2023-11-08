@@ -9,13 +9,29 @@ export const ButtonContainer = styled.button<InterButtonProps>`
   border-radius: 8px;
   position: relative;
   font-weight: 700;
+  color: ${(props) => {
+    switch (props.variants) {
+      case 'primary':
+        return props.theme['cinza-100']
+      case 'secondary':
+        return 'white'
+      case 'danger':
+        return props.theme['cinza-600']
+      case 'success':
+        return props.theme['cinza-600']
+      case 'back':
+        return props.theme['cinza-600']
+      default:
+        break
+    }
+  }};
 
   background-color: ${(props) => {
     switch (props.variants) {
       case 'primary':
         return props.theme['blue-200']
       case 'secondary':
-        return props.theme['cinza-100']
+        return props.theme['vermelho-100']
       case 'danger':
         return props.theme['vermelho-500']
       case 'success':
@@ -28,12 +44,13 @@ export const ButtonContainer = styled.button<InterButtonProps>`
   }};
 
   width: ${(props) => {
-    return props.variants === 'primary' && '30%'
+    return props.variants && '30%'
   }};
 
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+    color: ${({ theme }) => theme['cinza-100']};
   }
 
   &:not(:disabled):hover {
@@ -42,7 +59,7 @@ export const ButtonContainer = styled.button<InterButtonProps>`
         case 'primary':
           return props.theme['blue-300']
         case 'secondary':
-          return props.theme['cinza-100']
+          return props.theme['vermelho-300']
         case 'danger':
           return props.theme['vermelho-500']
         case 'success':
