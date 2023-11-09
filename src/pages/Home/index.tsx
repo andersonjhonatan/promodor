@@ -16,6 +16,7 @@ export const CycleContext = createContext({} as CycleContextProps)
 export const Home = () => {
   const [cycles, setCycles] = useState<CycleFormData[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newMyTasksSchema),
@@ -54,6 +55,7 @@ export const Home = () => {
         }
       }),
     )
+    setAmountSecondsPassed(0)
     setActiveCycleId(null)
   }
   return (
@@ -65,6 +67,8 @@ export const Home = () => {
             activeCycleId,
             register,
             setCycles,
+            amountSecondsPassed,
+            setAmountSecondsPassed,
           }}
         >
           <NewClyceForm />

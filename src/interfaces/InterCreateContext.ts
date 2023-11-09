@@ -10,4 +10,6 @@ export interface CycleContextProps {
     minutes: number
   }>
   setCycles: Dispatch<SetStateAction<CycleFormData[]>>
+  amountSecondsPassed: number
+  setAmountSecondsPassed: Dispatch<SetStateAction<number>>
 }
