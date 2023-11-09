@@ -51,14 +51,6 @@ const FormContainer = styled.form`
   }
 `
 
-const DivForm = styled.div`
-  display: flex;
-  gap: 1rem;
-  width: 82%;
-  justify-content: center;
-  align-items: center;
-`
-
 // countdown
 
 const CountdownDiv = styled.div`
@@ -81,4 +73,4 @@ const CountdownDiv = styled.div`
     font-family: 'Roboto Mono', monospace;
   }
 `
-export { DivForm, CountdownDiv, FormContainer, InputForm }
+export { CountdownDiv, FormContainer, InputForm }
