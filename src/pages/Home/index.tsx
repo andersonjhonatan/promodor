@@ -1,24 +1,20 @@
+/* eslint-disable prettier/prettier */
 import { HomeContainer } from './HomeStyles'
 import Button from '../../components/Button/Button'
 import { FormContainer } from '../../components/Form/formStyles'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import { NewCycleFormData } from '../../types/TNewFormData'
-import { useState, createContext } from 'react'
 import NewClyceForm from './components/NewCycleForm'
-import { CycleFormData } from '../../interfaces/InterNewCycleData'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newMyTasksSchema } from '../../schema/FormShemaMain'
 import CountDown from './components/CountDown'
-import { CycleContextProps } from '../../interfaces/InterCreateContext'
-
-export const CycleContext = createContext({} as CycleContextProps)
+import { useContext } from 'react'
+import { ContextCyle } from '../../Context/contextProvider'
 
 export const Home = () => {
-  const [cycles, setCycles] = useState<CycleFormData[]>([])
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
-  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
+  const { createNewCycle, activeCycle, handleInterruptCycle } = useContext(ContextCyle)
 
-  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
+  const newCycleForm = useForm<NewCycleFormData>({
     resolver: zodResolver(newMyTasksSchema),
     defaultValues: {
       minutes: 0,
@@ -26,54 +22,24 @@ export const Home = () => {
     },
   })
 
-  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+  const { handleSubmit, watch, reset } = newCycleForm
 
-  const submitForm: SubmitHandler<NewCycleFormData> = ({ minutes, nome }) => {
-    const id = String(new Date().getTime())
-
-    const newCycle: CycleFormData = {
-      id,
-      nome,
-      minutes,
-      startDate: new Date(),
-    }
-    setCycles((state) => [...state, newCycle])
-    setActiveCycleId(id)
+  const handleCreateNewCycle = (data: NewCycleFormData) => {
+    createNewCycle(data)
     reset()
   }
 
   const task = watch('nome')
   const isSubmitDisabled = !task
 
-  const handleInterruptCycle = () => {
-    setCycles((state) =>
-      state.map((cycle) => {
-        if (cycle.id === activeCycleId) {
-          return { ...cycle, interruptedDate: new Date() }
-        } else {
-          return cycle
-        }
-      }),
-    )
-    setAmountSecondsPassed(0)
-    setActiveCycleId(null)
-  }
   return (
     <HomeContainer>
-      <FormContainer onSubmit={handleSubmit(submitForm)}>
-        <CycleContext.Provider
-          value={{
-            activeCycle,
-            activeCycleId,
-            register,
-            setCycles,
-            amountSecondsPassed,
-            setAmountSecondsPassed,
-          }}
-        >
+      <FormContainer onSubmit={handleSubmit(handleCreateNewCycle)}>
+        <FormProvider {...newCycleForm}>
           <NewClyceForm />
-          <CountDown />
-        </CycleContext.Provider>
+        </FormProvider>
+
+        <CountDown />
 
         {activeCycle ? (
           <Button

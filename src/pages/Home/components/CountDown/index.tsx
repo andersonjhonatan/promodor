@@ -1,16 +1,16 @@
 import { useContext, useEffect } from 'react'
 import { CountdownDiv } from './styles'
 import { differenceInSeconds } from 'date-fns'
-import { CycleContext } from '../..'
+import { ContextCyle } from '../../../../Context/contextProvider'
 
 const CountDown = () => {
   const {
     activeCycle,
     activeCycleId,
-    setCycles,
+    markCurrentCycleAsFinished,
     amountSecondsPassed,
     setAmountSecondsPassed,
-  } = useContext(CycleContext)
+  } = useContext(ContextCyle)
 
   const totalSeconds = activeCycle ? activeCycle.minutes * 60 : 0
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
@@ -37,16 +37,8 @@ const CountDown = () => {
         const secondsDf = differenceInSeconds(new Date(), activeCycle.startDate)
 
         if (secondsDf >= totalSeconds) {
-          setCycles((state) =>
-            state.map((cycle) => {
-              if (cycle.id === activeCycleId) {
-                return { ...cycle, finishDate: new Date() }
-              } else {
-                setAmountSecondsPassed(0)
-                return cycle
-              }
-            }),
-          )
+          markCurrentCycleAsFinished()
+          setAmountSecondsPassed(totalSeconds)
           clearInterval(interval)
         } else {
           setAmountSecondsPassed(secondsDf)
@@ -56,17 +48,13 @@ const CountDown = () => {
 
     return () => {
       clearInterval(interval)
-      activeCycle &&
-        setCycles((state) =>
-          state.filter((cycle) => cycle.id !== activeCycleId),
-        )
     }
   }, [
     activeCycle,
     totalSeconds,
     activeCycleId,
-    setCycles,
     setAmountSecondsPassed,
+    markCurrentCycleAsFinished,
   ])
 
   return (

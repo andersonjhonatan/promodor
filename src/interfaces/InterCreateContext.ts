@@ -1,15 +1,13 @@
-import { UseFormRegister } from 'react-hook-form'
+import { createNewCycle } from '../Context/contextProvider'
 import { CycleFormData } from './InterNewCycleData'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface CycleContextProps {
   activeCycle: CycleFormData | undefined
   activeCycleId: string | null
-  register: UseFormRegister<{
-    nome: string
-    minutes: number
-  }>
-  setCycles: Dispatch<SetStateAction<CycleFormData[]>>
+  markCurrentCycleAsFinished: () => void
   amountSecondsPassed: number
   setAmountSecondsPassed: Dispatch<SetStateAction<number>>
+  createNewCycle: (data: createNewCycle) => void
+  handleInterruptCycle: () => void
 }

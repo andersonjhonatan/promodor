@@ -1,13 +1,16 @@
-import { CycleContext } from '../..'
+import { useFormContext } from 'react-hook-form'
 import { InputForm, DivForm } from './styles'
 import { useContext } from 'react'
+import { ContextCyle } from '../../../../Context/contextProvider'
 
 const NewClyceForm = () => {
-  const { activeCycle, register } = useContext(CycleContext)
+  const { activeCycle } = useContext(ContextCyle)
+  const { register } = useFormContext()
 
   return (
     <DivForm>
       <label htmlFor="nome">Vou trabalhar com</label>
+
       <InputForm
         variant="nome"
         id="nome"
