@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
+import { formatDistanceToNow } from 'date-fns'
 import {
   HistoryContainer,
   TableContainer,
@@ -12,12 +14,15 @@ import {
   BsSearchHeartStyled,
   Status,
 } from './historyStyle'
-import api from '../../db.json'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { InputForm } from '../../components/Form/formStyles'
+import { ContextCyle } from '../../Context/contextProvider'
+import ptBR from 'date-fns/locale/pt-BR'
 
 export const History = () => {
   const [tarefas, setTarefas] = useState(false)
+  const { cycles } = useContext(ContextCyle)
+
   useEffect(() => {
     setTimeout(() => {
       setTarefas(true)
@@ -46,11 +51,9 @@ export const History = () => {
           </button>
         </form>
         <datalist id="sugestion-task">
-          <option value="Projeto 1" />
-          <option value="Projeto 2" />
-          <option value="Projeto 3" />
-          <option value="Projeto 4" />
-          <option value="Projeto 5" />
+          {cycles.map((cycle) => (
+            <option key={cycle.id} value={cycle.nome} />
+          ))}
         </datalist>
       </ContainerTitle>
 
@@ -71,23 +74,26 @@ export const History = () => {
                 </tr>
               </TheadContainer>
               <TbodyContainer>
-                {api.tarefas.map((task) => (
+                {cycles.map((task) => (
                   <tr key={task.id}>
-                    <td>{task.Tarefa}</td>
-                    <td>{task.Duracao}</td>
-                    <td>{task.Inicio}</td>
+                    <td>{task.nome}</td>
+                    <td>{task.minutes} minutos</td>
                     <td>
-                      <Status
-                        statuscolor={
-                          task.Status === 'Concluido'
-                            ? 'green'
-                            : task.Status === 'Interrompido'
-                            ? 'red'
-                            : 'yellow'
-                        }
-                      >
-                        {task.Status}
-                      </Status>
+                      {formatDistanceToNow(new Date(task.startDate),{
+                        addSuffix: true,
+                        locale: ptBR,
+                      })}
+                    </td>
+                    <td>
+                      {task.finishDate && <Status statuscolor="green">Concluído</Status>}
+
+                      {task.interruptedDate && (
+                        <Status statuscolor="red">Interrompido</Status>
+                      )}
+
+                      {!task.finishDate && !task.interruptedDate && (
+                        <Status statuscolor="yellow">Em Andamento</Status>
+                      )}
                     </td>
                   </tr>
                 ))}

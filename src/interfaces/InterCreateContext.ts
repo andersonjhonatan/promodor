@@ -10,4 +10,5 @@ export interface CycleContextProps {
   setAmountSecondsPassed: Dispatch<SetStateAction<number>>
   createNewCycle: (data: createNewCycle) => void
   handleInterruptCycle: () => void
+  cycles: CycleFormData[]
 }

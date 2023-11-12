@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { HomeContainer } from './HomeStyles'
 import Button from '../../components/Button/Button'
 import { FormContainer } from '../../components/Form/formStyles'
@@ -12,7 +11,8 @@ import { useContext } from 'react'
 import { ContextCyle } from '../../Context/contextProvider'
 
 export const Home = () => {
-  const { createNewCycle, activeCycle, handleInterruptCycle } = useContext(ContextCyle)
+  const { createNewCycle, activeCycle, handleInterruptCycle } =
+    useContext(ContextCyle)
 
   const newCycleForm = useForm<NewCycleFormData>({
     resolver: zodResolver(newMyTasksSchema),
