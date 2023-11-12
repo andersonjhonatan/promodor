@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import { formatDistanceToNow } from 'date-fns'
@@ -18,10 +17,19 @@ import { useEffect, useState, useContext } from 'react'
 import { InputForm } from '../../components/Form/formStyles'
 import { ContextCyle } from '../../Context/contextProvider'
 import ptBR from 'date-fns/locale/pt-BR'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { filterNameProjectSchema } from '../../schema/FormShemaMain'
 
 export const History = () => {
   const [tarefas, setTarefas] = useState(false)
   const { cycles } = useContext(ContextCyle)
+  const { handleSubmit, register, watch } = useForm({
+    resolver: zodResolver(filterNameProjectSchema),
+    defaultValues: {
+      search: '',
+    },
+  })
 
   useEffect(() => {
     setTimeout(() => {
@@ -29,24 +37,24 @@ export const History = () => {
     }, 2000)
   }, [tarefas])
 
-  const handleClick = () => {
-    alert('Clicou')
-  }
+  const filteredCycles = cycles.filter((cycle) =>
+    cycle.nome.toLowerCase().includes(watch('search').toLowerCase()),
+  )
 
   return (
     <HistoryContainer>
       <ContainerTitle>
         <h1>Meu Histórico</h1>
-        <form>
+        <form onSubmit={handleSubmit(() => {})}>
           <InputForm
             type="text"
             list="sugestion-task"
-            name="search"
             label="Pesquisar"
             variant="search"
             placeholder="Pesquise sua tarefa"
+            {...register('search')}
           />
-          <button type="submit" onClick={handleClick}>
+          <button type="submit">
             <BsSearchHeartStyled />
           </button>
         </form>
@@ -74,7 +82,7 @@ export const History = () => {
                 </tr>
               </TheadContainer>
               <TbodyContainer>
-                {cycles.map((task) => (
+                {filteredCycles.map((task) => (
                   <tr key={task.id}>
                     <td>{task.nome}</td>
                     <td>{task.minutes} minutos</td>
@@ -85,7 +93,9 @@ export const History = () => {
                       })}
                     </td>
                     <td>
-                      {task.finishDate && <Status statuscolor="green">Concluído</Status>}
+                      {task.finishDate && (
+                        <Status statuscolor="green">Concluído</Status>
+                      )}
 
                       {task.interruptedDate && (
                         <Status statuscolor="red">Interrompido</Status>

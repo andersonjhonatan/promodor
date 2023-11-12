@@ -13,6 +13,7 @@ import {
   addNewCycleAction,
   interruptCycleAction,
   markCurrentCycleAsFinishedAction,
+  filterNameProjectAction,
 } from './actionType/CycleAction'
 import { differenceInSeconds } from 'date-fns'
 
@@ -81,6 +82,10 @@ export const CycleContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch(markCurrentCycleAsFinishedAction())
   }
 
+  const filteredCycles = (name: string) => {
+    dispatch(filterNameProjectAction(name))
+  }
+
   return (
     <ContextCyle.Provider
       value={{
@@ -92,6 +97,7 @@ export const CycleContextProvider = ({ children }: { children: ReactNode }) => {
         createNewCycle,
         handleInterruptCycle,
         cycles,
+        filteredCycles,
       }}
     >
       {children}

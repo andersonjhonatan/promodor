@@ -8,4 +8,8 @@ const newMyTasksSchema = zod.object({
     .max(60, { message: 'O tempo deve ser no máximo 60 minutos' }),
 })
 
-export { newMyTasksSchema }
+const filterNameProjectSchema = zod.string().min(1, {
+  message: 'O nome deve ter pelo menos 1 letra',
+})
+
+export { newMyTasksSchema, filterNameProjectSchema }
