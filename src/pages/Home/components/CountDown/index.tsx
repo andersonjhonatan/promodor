@@ -34,7 +34,10 @@ const CountDown = () => {
 
     if (activeCycle) {
       interval = setInterval(() => {
-        const secondsDf = differenceInSeconds(new Date(), activeCycle.startDate)
+        const secondsDf = differenceInSeconds(
+          new Date(),
+          new Date(activeCycle.startDate),
+        )
 
         if (secondsDf >= totalSeconds) {
           markCurrentCycleAsFinished()
