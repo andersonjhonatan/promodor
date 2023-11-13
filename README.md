@@ -1,4 +1,4 @@
-# Nome do Seu Projeto
+# Anderson Timer
 
 ## Descrição
 [
@@ -7,16 +7,8 @@ Nome do Projeto: Pomodoro Timer
 Descrição
 O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerenciamento de tempo conhecida como Pomodoro. A técnica Pomodoro envolve dividir o trabalho em períodos de tempo focados, chamados de "pomodoros", intercalados com pequenos intervalos de descanso. Esta aplicação foi desenvolvida para ajudar os usuários a implementar essa técnica de maneira fácil e eficiente.]
 
-## Demonstração
-[Inclua imagens ou GIFs para demonstrar a aparência e o funcionamento do seu projeto]
-
-## Funcionalidades
-- [Funcionalidade 1]
-- [Funcionalidade 2]
-- ...
-
 ## Capturas de Tela
-![History](/home/anderson/Imagens/Capturas de tela/capturaHistory.png)
+![History](/Imagens/Capturas de tela/capturaHistory.png)
 
 ## Como Usar
 1. **Clone o repositório:**
