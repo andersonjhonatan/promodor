@@ -8,6 +8,7 @@ O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerencia
 
 ## Capturas de Tela
 ![History](https://github.com/andersonjhonatan/timer-pomodor/blob/main/public/capturaHistory.png?raw=true)
+![home](https://github.com/andersonjhonatan/timer-pomodor/blob/main/public/capturaHome.png?raw=true)
 
 ## Como Usar
 1. **Clone o repositório:**
@@ -37,6 +38,6 @@ O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerencia
 
 
 ## Autor
-Anderson Jhonatan dso SSantos
+Anderson Jhonatan dos Santos
 
 
