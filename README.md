@@ -1,11 +1,11 @@
 # Anderson Timer
 
 ## Descrição
-[
+
 Nome do Projeto: Pomodoro Timer
 
 Descrição
-O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerenciamento de tempo conhecida como Pomodoro. A técnica Pomodoro envolve dividir o trabalho em períodos de tempo focados, chamados de "pomodoros", intercalados com pequenos intervalos de descanso. Esta aplicação foi desenvolvida para ajudar os usuários a implementar essa técnica de maneira fácil e eficiente.]
+O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerenciamento de tempo conhecida como Pomodoro. A técnica Pomodoro envolve dividir o trabalho em períodos de tempo focados, chamados de "pomodoros", intercalados com pequenos intervalos de descanso. Esta aplicação foi desenvolvida para ajudar os usuários a implementar essa técnica de maneira fácil e eficiente.
 
 ## Capturas de Tela
 ![History](/Imagens/Capturas de tela/capturaHistory.png)
@@ -13,7 +13,7 @@ O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerencia
 ## Como Usar
 1. **Clone o repositório:**
     ```bash
-    git clone https://github.com/seu-usuario/seu-projeto.git
+    git clone git@github.com:andersonjhonatan/timer-pomodor.git
     ```
 
 2. **Instale as dependências:**
@@ -38,6 +38,6 @@ O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerencia
 
 
 ## Autor
-[Anderson Jhonatan dso SSantos]
+Anderson Jhonatan dso SSantos
 
 
