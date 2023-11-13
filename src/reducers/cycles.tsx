@@ -1,15 +1,14 @@
 import { CyclesState } from '../Context/contextProvider'
-import { ActionTypes } from '../Context/actionType/CycleAction'
+import { ActionTypes, BaseAction } from '../Context/actionType/CycleAction'
 import { produce } from 'immer'
 import { ActionProps } from '../interfaces/InterActionReducer'
 
-function cycleReducer(state: CyclesState, action: ActionProps) {
+function cycleReducer(state: CyclesState, action: BaseAction) {
   switch (action.type) {
     case ActionTypes.CREATE_NEW_CYCLE:
       return produce(state, (draft) => {
-        // draft é o estado atual
-        draft.cycles.push(action.payload.data)
-        draft.activeCycleId = action.payload.data.id
+        draft.cycles.push((action as ActionProps).payload.data)
+        draft.activeCycleId = (action as ActionProps).payload.data.id
       })
 
     case ActionTypes.INTERRUPT_CYCLE: {

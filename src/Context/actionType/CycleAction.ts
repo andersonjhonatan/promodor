@@ -8,6 +8,10 @@ export enum ActionTypes {
   DELETE_CYCLES = 'DELETE_CYCLES',
 }
 
+export interface BaseAction {
+  type: ActionTypes;
+}
+
 export const addNewCycleAction = ({ newCycle }: { newCycle: CycleFormData }) => ({
   type: ActionTypes.CREATE_NEW_CYCLE,
   payload: {
