@@ -1,9 +1,9 @@
 import { CyclesState } from '../Context/contextProvider'
 import { ActionTypes } from '../Context/actionType/CycleAction'
 import { produce } from 'immer'
-/* import { CycleFormData } from '../interfaces/InterNewCycleData'
- */
-function cycleReducer(state: CyclesState, action: any) {
+import { ActionProps } from '../interfaces/InterActionReducer'
+
+function cycleReducer(state: CyclesState, action: ActionProps) {
   switch (action.type) {
     case ActionTypes.CREATE_NEW_CYCLE:
       return produce(state, (draft) => {
