@@ -1,8 +1,8 @@
-import { ACTION_TYPES } from '../types/TActionType'
+import { ActionTypes } from '../Context/actionType/CycleAction'
 import { CycleFormData } from './InterNewCycleData'
 
 export interface ActionProps {
-  type: ACTION_TYPES
+  type: ActionTypes
   payload: {
     data: CycleFormData
   }
