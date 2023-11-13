@@ -1,27 +1,51 @@
-# React + TypeScript + Vite
+# Nome do Seu Projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
+[
+Nome do Projeto: Pomodoro Timer
 
-Currently, two official plugins are available:
+Descrição
+O Pomodoro Timer é uma aplicação simples e eficaz para a técnica de gerenciamento de tempo conhecida como Pomodoro. A técnica Pomodoro envolve dividir o trabalho em períodos de tempo focados, chamados de "pomodoros", intercalados com pequenos intervalos de descanso. Esta aplicação foi desenvolvida para ajudar os usuários a implementar essa técnica de maneira fácil e eficiente.]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demonstração
+[Inclua imagens ou GIFs para demonstrar a aparência e o funcionamento do seu projeto]
 
-## Expanding the ESLint configuration
+## Funcionalidades
+- [Funcionalidade 1]
+- [Funcionalidade 2]
+- ...
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Capturas de Tela
+![History](/home/anderson/Imagens/Capturas de tela/capturaHistory.png)
 
-- Configure the top-level `parserOptions` property like this:
+## Como Usar
+1. **Clone o repositório:**
+    ```bash
+    git clone https://github.com/seu-usuario/seu-projeto.git
+    ```
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+2. **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+   
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. **Inicie o aplicativo:**
+    ```bash
+    npm run dev
+    ```
+   
+
+## Tecnologias Utilizadas
+- [Context API](https://reactjs.org/docs/context.html)
+- [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
+- [immer](https://immerjs.github.io/immer/docs/introduction)
+- [zod](https://github.com/colinhacks/zod)
+- [date-fns](https://date-fns.org/)
+- [React Hook Form](https://react-hook-form.com/)
+
+
+## Autor
+[Anderson Jhonatan dso SSantos]
+
+
