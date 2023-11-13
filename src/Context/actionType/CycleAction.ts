@@ -5,6 +5,7 @@ export enum ActionTypes {
   CREATE_NEW_CYCLE = 'CREATE_NEW_CYCLE',
   INTERRUPT_CYCLE = 'INTERRUPT_CYCLE',
   MARK_CURRENT_CYCLE_AS_FINISHED = 'MARK_CURRENT_CYCLE_AS_FINISHED',
+  FILTER_NAME_PROJECT = 'FILTER_NAME_PROJECT',
   DELETE_CYCLES = 'DELETE_CYCLES',
 }
 
@@ -28,7 +29,7 @@ export const markCurrentCycleAsFinishedAction = () => ({
 })
 
 export const filterNameProjectAction = (name: string) => ({
-  type: ActionTypes.CREATE_NEW_CYCLE,
+  type: ActionTypes.FILTER_NAME_PROJECT,
   payload: {
     data: name,
   },
