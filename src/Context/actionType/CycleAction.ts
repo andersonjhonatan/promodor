@@ -1,17 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { CycleFormData } from '../../interfaces/InterNewCycleData'
-
-export enum ActionTypes {
-  CREATE_NEW_CYCLE = 'CREATE_NEW_CYCLE',
-  INTERRUPT_CYCLE = 'INTERRUPT_CYCLE',
-  MARK_CURRENT_CYCLE_AS_FINISHED = 'MARK_CURRENT_CYCLE_AS_FINISHED',
-  FILTER_NAME_PROJECT = 'FILTER_NAME_PROJECT',
-  DELETE_CYCLES = 'DELETE_CYCLES',
-}
-
-export interface BaseAction {
-  type: ActionTypes;
-}
+import { ActionTypes } from '../../types/TActionType'
 
 export const addNewCycleAction = ({ newCycle }: { newCycle: CycleFormData }) => ({
   type: ActionTypes.CREATE_NEW_CYCLE,
@@ -22,10 +11,26 @@ export const addNewCycleAction = ({ newCycle }: { newCycle: CycleFormData }) => 
 
 export const interruptCycleAction = () => ({
   type: ActionTypes.INTERRUPT_CYCLE,
+  payload: {
+    data: {
+      id: '',
+      nome: '',
+      minutes: 0,
+      startDate: new Date(),
+    },
+  },
 })
 
 export const markCurrentCycleAsFinishedAction = () => ({
   type: ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED,
+  payload: {
+    data: {
+      id: '',
+      nome: '',
+      minutes: 0,
+      startDate: new Date(),
+    },
+  },
 })
 
 export const filterNameProjectAction = (name: string) => ({
@@ -38,7 +43,11 @@ export const filterNameProjectAction = (name: string) => ({
 export const deleteCyclesAllAction = () => ({
   type: ActionTypes.DELETE_CYCLES,
   payload: {
-    data: [],
-  }
+    data: {
+      id: '',
+      nome: '',
+      minutes: 0,
+      startDate: new Date(),
+    },
+  },
 })
-

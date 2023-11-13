@@ -1,4 +1,4 @@
-import { ActionTypes } from '../Context/actionType/CycleAction'
+import { ActionTypes } from '../types/TActionType'
 import { CycleFormData } from './InterNewCycleData'
 
 export interface ActionProps {
