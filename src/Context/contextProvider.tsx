@@ -13,7 +13,7 @@ import {
   addNewCycleAction,
   interruptCycleAction,
   markCurrentCycleAsFinishedAction,
-  filterNameProjectAction,
+  deleteCyclesAllAction,
 } from './actionType/CycleAction'
 import { differenceInSeconds } from 'date-fns'
 
@@ -82,8 +82,9 @@ export const CycleContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch(markCurrentCycleAsFinishedAction())
   }
 
-  const filteredCycles = (name: string) => {
-    dispatch(filterNameProjectAction(name))
+  const deleterCycles = () => {
+    dispatch(deleteCyclesAllAction())
+    localStorage.removeItem('@anderson-timer:cycles-state')
   }
 
   return (
@@ -97,7 +98,7 @@ export const CycleContextProvider = ({ children }: { children: ReactNode }) => {
         createNewCycle,
         handleInterruptCycle,
         cycles,
-        filteredCycles,
+        deleterCycles,
       }}
     >
       {children}

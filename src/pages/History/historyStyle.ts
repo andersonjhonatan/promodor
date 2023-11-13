@@ -60,6 +60,8 @@ const ContainerMain = styled.div`
   width: 100%;
   margin-bottom: 50px;
   border-radius: 8px 20px 20px 8px;
+  margin-top: 2rem;
+  text-align: center;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -164,6 +166,14 @@ const Status = styled.span<StatusProps>`
   }
 `
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  width: 100%;
+
+`
+
 export {
   HistoryContainer,
   TableContainer,
@@ -175,4 +185,5 @@ export {
   ContainerTitle,
   BsSearchHeartStyled,
   Status,
+  ButtonsContainer,
 }

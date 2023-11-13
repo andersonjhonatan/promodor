@@ -11,5 +11,5 @@ export interface CycleContextProps {
   createNewCycle: (data: createNewCycle) => void
   handleInterruptCycle: () => void
   cycles: CycleFormData[]
-  filteredCycles: (name: string) => void
+  deleterCycles: () => void
 }
