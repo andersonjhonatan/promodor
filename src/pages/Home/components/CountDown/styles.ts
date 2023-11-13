@@ -1,5 +1,15 @@
 import styled from 'styled-components'
 
+const ContainerDiv = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  p {
+    padding-top: 3rem;
+  }
+`
+
 const CountdownDiv = styled.div`
   display: flex;
   gap: 1.2rem;
@@ -21,4 +31,4 @@ const CountdownDiv = styled.div`
   }
 `
 
-export { CountdownDiv }
+export { CountdownDiv, ContainerDiv }

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { CountdownDiv } from './styles'
+import { CountdownDiv, ContainerDiv } from './styles'
 import { differenceInSeconds } from 'date-fns'
 import { ContextCyle } from '../../../../Context/contextProvider'
 
@@ -61,13 +61,18 @@ const CountDown = () => {
   ])
 
   return (
-    <CountdownDiv>
-      <span>{minutes[0]}</span>
-      <span>{minutes[1]}</span>
-      <p>:</p>
-      <span>{seconds[0]}</span>
-      <span>{seconds[1]}</span>
-    </CountdownDiv>
+    <ContainerDiv>
+      <div>
+        <p># {activeCycle?.nome}</p>
+      </div>
+      <CountdownDiv>
+        <span>{minutes[0]}</span>
+        <span>{minutes[1]}</span>
+        <p>:</p>
+        <span>{seconds[0]}</span>
+        <span>{seconds[1]}</span>
+      </CountdownDiv>
+    </ContainerDiv>
   )
 }
 
