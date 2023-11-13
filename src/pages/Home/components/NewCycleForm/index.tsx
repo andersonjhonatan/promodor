@@ -6,6 +6,7 @@ import { ContextCyle } from '../../../../Context/contextProvider'
 const NewClyceForm = () => {
   const { activeCycle } = useContext(ContextCyle)
   const { register } = useFormContext()
+  const { cycles } = useContext(ContextCyle)
 
   return (
     <DivForm>
@@ -22,11 +23,9 @@ const NewClyceForm = () => {
       />
 
       <datalist id="sugestions-task">
-        <option value="Projeto 1" />
-        <option value="Projeto 2" />
-        <option value="Projeto 3" />
-        <option value="Projeto 4" />
-        <option value="Projeto 5" />
+        {cycles.map((cycle) => {
+          return <option key={cycle.id} value={cycle.nome} />
+        })}
       </datalist>
 
       <label htmlFor="minutes">durante</label>

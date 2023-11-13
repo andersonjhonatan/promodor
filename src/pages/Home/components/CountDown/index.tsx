@@ -23,7 +23,7 @@ const CountDown = () => {
 
   useEffect(() => {
     if (activeCycle) {
-      document.title = `${minutes}:${seconds} - Anderson Timer`
+      document.title = `${minutes}:${seconds} - ${activeCycle?.nome}`
     } else {
       document.title = ' 00:00 - Anderson Timer'
     }
